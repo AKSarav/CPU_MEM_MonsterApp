@@ -5,7 +5,10 @@
  */
 package com.middlewareinventory.sarav;
 
+
 import java.util.Vector;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -13,19 +16,32 @@ import java.util.Vector;
  */
 public class MemMonster {
     
-    public MemMonster() throws InterruptedException
+    public void MemMonsterThread(int maxsize,int MBPerbite, int Sleeptime) throws InterruptedException
   {
     Vector v = new Vector();
     while (true)
     {
-      byte b[] = new byte[1048576];
+        
+      int MBToB=MBPerbite*1000000;
+      Logger.getLogger(MemMonster.class.getName()).log(Level.INFO, "Allocating "+MBToB+" To the Vector");
+      byte b[] = new byte[MBToB];
       v.add(b);
       Runtime rt = Runtime.getRuntime();
       System.out.println(" Memory Monster Invoked");
       System.out.println( "free memory: " + rt.freeMemory() );
       System.out.println("Current VectorSize:"+v.size());
-      Thread.sleep(1000);
+      
+      int SecToMs = Sleeptime*1000;
+      Logger.getLogger(MemMonster.class.getName()).log(Level.INFO, "Taking a Break for "+SecToMs+" Milliseconds");
+      Thread.sleep(SecToMs);
           
+      if (v.size() == maxsize)
+      {
+          Logger.getLogger(MemMonster.class.getName()).log(Level.INFO,"Clearing the Vector as MaxSize of"+maxsize+"Reached");
+          v.clear();
+          break;
+      }
+      
     }
   }
 }

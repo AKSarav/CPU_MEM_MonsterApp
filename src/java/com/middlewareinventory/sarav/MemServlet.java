@@ -41,6 +41,23 @@ public class MemServlet extends HttpServlet {
         //Invoke the monster finally
         com.middlewareinventory.sarav.MemMonster OBJM = new com.middlewareinventory.sarav.MemMonster();
         
+        
+        String NoOfThreads=request.getParameter("NoOfThreads");
+        String MMPT=request.getParameter("MMPT");
+        String MBPerBite=request.getParameter("MBPerBite");
+        String Sleeptime=request.getParameter("Sleeptime");
+            
+            //Invoke the monster finally
+            
+            int maxthread=Integer.parseInt(NoOfThreads)+1;
+            
+            for (int i=1;i<maxthread;i++)
+            {
+                System.out.println("Creating a new thread at MemoryServlet");
+                XThread xThread = new com.middlewareinventory.sarav.XThread();
+                xThread.startNewMemoryMonsterThread(MMPT,MBPerBite,Sleeptime);
+            }
+        
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

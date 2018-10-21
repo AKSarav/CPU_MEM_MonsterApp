@@ -39,16 +39,18 @@ public class CPUServlet extends HttpServlet {
             RequestDispatcher view = request.getRequestDispatcher("Output.jsp?MN=CM");
             view.forward(request, response);
             
-            String seconds=request.getParameter("secondstorun");
+            String seconds=request.getParameter("seconds");
+            String NoOfThreads=request.getParameter("NoOfThreads");
             
             //Invoke the monster finally
             
-            int maxthread=5;
-            com.middlewareinventory.sarav.CPUMonster Obj[] = new com.middlewareinventory.sarav.CPUMonster[maxthread];
+            int maxthread=Integer.parseInt(NoOfThreads)+1;
+            
             for (int i=1;i<maxthread;i++)
             {
-                Obj[i] = new com.middlewareinventory.sarav.CPUMonster();
-                Obj[i].CPUMonsterThread(Integer.parseInt(seconds));
+                System.out.println("Creating a new thread at CPUServlet");
+                XThread xThread = new com.middlewareinventory.sarav.XThread();
+                xThread.startNewCPUMonsterThread(seconds);
             }
             
             
