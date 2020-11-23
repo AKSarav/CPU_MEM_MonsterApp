@@ -53,7 +53,7 @@ public class MemServlet extends HttpServlet {
             
             for (int i=1;i<maxthread;i++)
             {
-                System.out.println("Creating a new thread at MemoryServlet");
+                //System.out.println("Creating a new thread/Monster at MemoryServlet");
                 XThread xThread = new com.middlewareinventory.sarav.XThread();
                 xThread.startNewMemoryMonsterThread(MMPT,MBPerBite,Sleeptime);
             }

@@ -48,7 +48,7 @@ public class CPUServlet extends HttpServlet {
             
             for (int i=1;i<maxthread;i++)
             {
-                System.out.println("Creating a new thread at CPUServlet");
+                //System.out.println("Creating a new Monster/Thread at CPUServlet");
                 XThread xThread = new com.middlewareinventory.sarav.XThread();
                 xThread.startNewCPUMonsterThread(seconds);
             }

@@ -37,7 +37,6 @@ public class XThread  {
         public void run(){
             com.middlewareinventory.sarav.MemMonster OBJM = new com.middlewareinventory.sarav.MemMonster();
             Logger.getLogger(XThread.class.getName()).log(Level.INFO,"New Memory Monster Thread Started");
-            System.out.println(Thread.currentThread());
             try {
                 OBJM.MemMonsterThread(Integer.parseInt(mmpt),Integer.parseInt(MBPerBite),Integer.parseInt(Sleeptime));
             } catch (InterruptedException ex) {

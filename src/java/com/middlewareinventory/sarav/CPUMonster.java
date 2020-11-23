@@ -23,6 +23,7 @@ public class CPUMonster {
             double x = Math.cos(start++);
         }
         
+        
     }     
         
         
